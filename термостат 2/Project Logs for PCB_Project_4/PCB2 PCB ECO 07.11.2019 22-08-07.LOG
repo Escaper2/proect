@@ -1,0 +1,12 @@
+Removed Pin From Net: NetName=VCC Pin=U3-8
+Added Component: Designator=XS3(DG340-3.81-02P)
+Add component. Clean all parameters for all variants
+Added Pin To Net: NetName=VCC Pin=U3-16
+Added Pin To Net: NetName=GND Pin=XS3-1
+Change Net Name : Old Net Name=NetS?_2 New Net Name=NetS4_2
+Change Net Name : Old Net Name=NetS?_3 New Net Name=NetS4_3
+Added Pin To Net: NetName=NetU3_8 Pin=U3-8
+Added Pin To Net: NetName=NetU3_8 Pin=XS3-2
+Added Net: Name=NetU3_8
+Added Member To Class: ClassName=Sheet1 Member=Component S4 SW-SPDT
+Added Member To Class: ClassName=Sheet1 Member=Component XS3 DG340-3.81-02P

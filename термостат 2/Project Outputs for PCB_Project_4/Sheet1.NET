@@ -1,0 +1,116 @@
+Wire List
+
+<<< Component List >>>
+CAP_0805                        C1             CAP0805
+CAP_0805                        C2             CAP0805
+CAP_0805                        C3             CAP0805
+CAP_0805                        C4             CAP0805
+CAP_0805                        C5             CAP0805
+CAP_0805                        C6             CAP0805
+RES-0.125                       R1             RES-0.125
+RES-0.125                       R2             RES-0.125
+RES-0.125                       R3             RES-0.125
+RES-0.125                       R4             RES-0.125
+RES-0.125                       R5             RES-0.125
+SW-Power                        S1             SPST-2
+SW-REZHIM                       S2             TL36WW15050
+SW-LOG                          S3             TL36WW15050
+SW-LOG                          S4             TL36WW15050
+LM56BIM/NOPB                    U1             M08A_M
+Part Number: 74HC04D            U2             SOT108-1
+L293D                           U3             DIP16
+DG340-3.81-02P                  XS1            DG340-3.81-02P
+DG340-3.81-02P                  XS2            DG340-3.81-02P
+
+<<< Wire List >>>
+
+  NODE  REFERENCE  PIN #   PIN NAME       PIN TYPE    PART VALUE
+
+[00001] GND
+        C1         2       2              PASSIVE     CAP_0805
+        C2         2       2              PASSIVE     CAP_0805
+        C3         2       2              PASSIVE     CAP_0805
+        C4         2       2              PASSIVE     CAP_0805
+        C5         2       2              PASSIVE     CAP_0805
+        C6         2       2              PASSIVE     CAP_0805
+        R3         1       1              PASSIVE     RES-0.125
+        U1         8       GND            POWER       LM56BIM/NOPB
+        U2         7       GND            POWER       Part Number: 74HC04D
+        U3         4       GND            PASSIVE     L293D
+        U3         5       GND            PASSIVE     L293D
+        U3         12      GND            PASSIVE     L293D
+        U3         13      GND            PASSIVE     L293D
+        XS1        1       1              PASSIVE     DG340-3.81-02P
+
+[00002] NetR1_1
+        R1         1       1              PASSIVE     RES-0.125
+        R2         2       2              PASSIVE     RES-0.125
+        U1         3       VT 1           INPUT       LM56BIM/NOPB
+
+[00003] NetR1_2
+        R1         2       2              PASSIVE     RES-0.125
+        U1         1       VREF           OUTPUT      LM56BIM/NOPB
+
+[00004] NetR2_1
+        R2         1       1              PASSIVE     RES-0.125
+        R3         2       2              PASSIVE     RES-0.125
+        U1         2       VT 2           INPUT       LM56BIM/NOPB
+
+[00005] NetR4_1
+        R4         1       1              PASSIVE     RES-0.125
+        U1         7       OUT 1          OPEN COLLECTORLM56BIM/NOPB
+        U2         1       1A             INPUT       Part Number: 74HC04D
+
+[00006] NetR4_2
+        R4         2       2              PASSIVE     RES-0.125
+        R5         2       2              PASSIVE     RES-0.125
+        S2         3       3              PASSIVE     SW-REZHIM
+        U1         5       V+             POWER       LM56BIM/NOPB
+
+[00007] NetR5_1
+        R5         1       1              PASSIVE     RES-0.125
+        S3         3       3              PASSIVE     SW-LOG
+        U1         6       OUT 2          OPEN COLLECTORLM56BIM/NOPB
+
+[00008] NetS1_1
+        S1         1       COMMON         PASSIVE     SW-Power
+        XS1        2       2              PASSIVE     DG340-3.81-02P
+
+[00009] NetS2_1
+        S2         1       1              PASSIVE     SW-REZHIM
+        S3         1       1              PASSIVE     SW-LOG
+        S4         1       1              PASSIVE     SW-LOG
+
+[00010] NetS3_2
+        S3         2       2              PASSIVE     SW-LOG
+        U3         2       Input 1        PASSIVE     L293D
+
+[00011] NetS4_2
+        S4         2       2              PASSIVE     SW-LOG
+        U3         7       Input 2        PASSIVE     L293D
+
+[00012] NetS4_3
+        S4         3       3              PASSIVE     SW-LOG
+        U2         2       1Y             OUTPUT      Part Number: 74HC04D
+
+[00024] NetU3_3
+        U3         3       Output1        PASSIVE     L293D
+        XS2        2       2              PASSIVE     DG340-3.81-02P
+
+[00025] NetU3_6
+        U3         6       Output2        PASSIVE     L293D
+        XS2        1       1              PASSIVE     DG340-3.81-02P
+
+[00031] VCC
+        C1         1       1              PASSIVE     CAP_0805
+        C2         1       1              PASSIVE     CAP_0805
+        C3         1       1              PASSIVE     CAP_0805
+        C4         1       1              PASSIVE     CAP_0805
+        C5         1       1              PASSIVE     CAP_0805
+        C6         1       1              PASSIVE     CAP_0805
+        S1         2       NO             PASSIVE     SW-Power
+        S2         2       2              PASSIVE     SW-REZHIM
+        U2         14      VCC            POWER       Part Number: 74HC04D
+        U3         1       Enable 1       PASSIVE     L293D
+        U3         8       Us             PASSIVE     L293D
+

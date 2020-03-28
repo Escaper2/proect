@@ -1,0 +1,2 @@
+Change Component Library : Designator=S4 Old Library=Miscellaneous Devices.IntLib New Library=Miscellaneous Devices.SchLib
+Added Pin To Net: NetName=NetR5_1 Pin=S3-3

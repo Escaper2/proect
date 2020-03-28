@@ -1,0 +1,35 @@
+Removed Pin From Net: NetName=NetS2_1 Pin=S2-1
+Removed Pin From Net: NetName=VCC Pin=S2-2
+Removed Pin From Net: NetName=NetR4_2 Pin=S2-3
+Removed Member From Class: ClassName=Sheet1 Member=S2
+Change Component Comment : Designator=S3 Old Comment=SW-SPDT New Comment=SW-LOG1
+Added Component: Designator=S?(TL36WW15050)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.apem.com"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DatasheetVersion"; Value = "05-Dec-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Dec-2003"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Schematic revised, PCB Footprint replaced."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "Switch; 4 Leads"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "TL36WW15050"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "24-Mar-1999"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Component: Designator=S?(TL36WW15050)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "ComponentLink1Description"; Value = "Manufacturer Link"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "ComponentLink1URL"; Value = "http://www.apem.com"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "DatasheetVersion"; Value = "05-Dec-2000"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionDate"; Value = "17-Dec-2003"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "LatestRevisionNote"; Value = "Schematic revised, PCB Footprint replaced."; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageDescription"; Value = "Switch; 4 Leads"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "PackageReference"; Value = "TL36WW15050"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Published"; Value = "24-Mar-1999"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Publisher"; Value = "Altium Limited"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetS2_1 Pin=S?-1
+Added Pin To Net: NetName=VCC Pin=S?-2
+Added Pin To Net: NetName=NetR4_2 Pin=S?-3
+Change Net Name : Old Net Name=NetS2_1 New Net Name=NetS3_1
+Change Net Name : Old Net Name=NetS?_2 New Net Name=NetS3_2
+Added Member To Class: ClassName=Sheet1 Member=Component S? SW-SPDT
+Added Member To Class: ClassName=Sheet1 Member=Component S? SW-SPDT
+Added Room: Name=Sheet1
