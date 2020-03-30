@@ -1,0 +1,439 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD20\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">30.03.2020</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">18:21:14</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc" class="file"><acronym title="C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc">C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">33</td></tr>
+</table>
+</td>
+</table><a name="ID0BPCOLTICIE3NJSFUXYSC4LD2C0P23CVQK5DCNGPD2ZSDENCPBPG"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID3SACIK0TA0FML4VGRHMED1FJYGLIB1DB0VN0U1PRQWEDAZLFKWTK">Clearance Constraint (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">6</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDPD12ENB1KEYRKKMD0B10ZYY1EKUBM2EXS2VN24CLFEDTLAMMK5YC">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDFPN2MZXKDYZCLTDGL1AK2LLTKC4ST3FTTAS3GDG4T0MHYCIFKDAL">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJOHMG1JYOTREJ1P0MLTHK53K2HEWVP34ERPMM3IWJWCJKWX1CTNL">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDU5YZMZKTCSPSNF0045C21PMAIDMAPEJAZJWQ2ECXERENH3W1KUED">Width Constraint (Min=0.3mm) (Max=0.8mm) (Preferred=0.3mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDPNQ124RG422TMDRUFTQTXGKQTFCZCJWFEFIMLGOMRL5IUOS4ZRVC">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDVATDNSBHSN5CK3PY5B4Q5J0OVDNFHBHWUSRYIIJQFXIQXADAQDJL">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">6</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDVBIA4IY1A0EEE242I4MHD5NTPIUKPGZZCEMIVPJ0IPBZTR3OJDJF">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID4WVHO1YMGNCRMMVX1S0213X1TNVQ4Q2LYRUV2IIFRP23YLLOUY1B">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">3</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID1MIWFJELOSPRLETA5V1FUUAMFPKH5NQSU3C4TPGMTWS0OOWTUUWL">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</a></td>
+<td class="column2">18</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDJ5FR35M4CRCIOI3INWGTYCIWJW4V3GC1FCCVIC0JOHYOONCWVHG">Silk to Silk (Clearance=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDLHWXJAODXJDBJ5NZO3LC3HHPKJB1XFKJQ22AQFEX4HIX5B4EYP4J">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDIF4LQA2VYLNVH1SMXUF5F3534HLMABI1M00QW3FOW1XCIHPK4FPP">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">33</td>
+</tr>
+</table><br><a name="ID3SACIK0TA0FML4VGRHMED1FJYGLIB1DB0VN0U1PRQWEDAZLFKWTK"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Clearance Constraint (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2689.08mil|Location2.X=2696.747mil|Location1.Y=1656.009mil|Location2.Y=1663.676mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2689.08mil|Location2.X=2696.747mil|Location1.Y=1656.009mil|Location2.Y=1663.676mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.254mm) Between Area Fill (32.123mm,11.246mm) (37.711mm,17.469mm) on Top Layer And Pad S3-M(34.473mm,12.96mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2689.08mil|Location2.X=2696.747mil|Location1.Y=1756.009mil|Location2.Y=1763.676mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2689.08mil|Location2.X=2696.747mil|Location1.Y=1756.009mil|Location2.Y=1763.676mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.254mm) Between Area Fill (32.123mm,11.246mm) (37.711mm,17.469mm) on Top Layer And Pad S3-M(34.473mm,15.5mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2689.08mil|Location2.X=2696.747mil|Location1.Y=2035.537mil|Location2.Y=2043.203mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2689.08mil|Location2.X=2696.747mil|Location1.Y=2035.537mil|Location2.Y=2043.203mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.254mm) Between Area Fill (32.123mm,20.886mm) (37.711mm,27.109mm) on Top Layer And Pad S4-M(34.473mm,22.6mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2689.08mil|Location2.X=2696.747mil|Location1.Y=2135.537mil|Location2.Y=2143.203mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2689.08mil|Location2.X=2696.747mil|Location1.Y=2135.537mil|Location2.Y=2143.203mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.254mm) Between Area Fill (32.123mm,20.886mm) (37.711mm,27.109mm) on Top Layer And Pad S4-M(34.473mm,25.14mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2689.08mil|Location2.X=2696.747mil|Location1.Y=2405.615mil|Location2.Y=2413.282mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2689.08mil|Location2.X=2696.747mil|Location1.Y=2405.615mil|Location2.Y=2413.282mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.254mm) Between Area Fill (32.123mm,30.286mm) (37.711mm,36.509mm) on Top Layer And Pad S2-M(34.473mm,32mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2689.08mil|Location2.X=2696.747mil|Location1.Y=2505.615mil|Location2.Y=2513.282mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2689.08mil|Location2.X=2696.747mil|Location1.Y=2505.615mil|Location2.Y=2513.282mil|Absolute=True">Clearance Constraint: (Collision &lt; 0.254mm) Between Area Fill (32.123mm,30.286mm) (37.711mm,36.509mm) on Top Layer And Pad S2-M(34.473mm,34.54mm) on Multi-Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDVATDNSBHSN5CK3PY5B4Q5J0OVDNFHBHWUSRYIIJQFXIQXADAQDJL"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1358.722mil|Location2.X=1478.083mil|Location1.Y=1164.729mil|Location2.Y=1284.089mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1358.722mil|Location2.X=1478.083mil|Location1.Y=1164.729mil|Location2.Y=1284.089mil|Absolute=True">Hole Size Constraint: (3mm &gt; 2.54mm) Pad Free-7(2.1mm,1.9mm) on Multi-Layer Actual Hole Size = 3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1358.722mil|Location2.X=1478.083mil|Location1.Y=3420.635mil|Location2.Y=3539.995mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1358.722mil|Location2.X=1478.083mil|Location1.Y=3420.635mil|Location2.Y=3539.995mil|Absolute=True">Hole Size Constraint: (3mm &gt; 2.54mm) Pad Free-7(2.1mm,59.2mm) on Multi-Layer Actual Hole Size = 3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2795.73mil|Location2.X=2915.09mil|Location1.Y=1164.729mil|Location2.Y=1284.089mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2795.73mil|Location2.X=2915.09mil|Location1.Y=1164.729mil|Location2.Y=1284.089mil|Absolute=True">Hole Size Constraint: (3mm &gt; 2.54mm) Pad Free-7(38.6mm,1.9mm) on Multi-Layer Actual Hole Size = 3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2795.73mil|Location2.X=2915.09mil|Location1.Y=3420.635mil|Location2.Y=3539.995mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2795.73mil|Location2.X=2915.09mil|Location1.Y=3420.635mil|Location2.Y=3539.995mil|Absolute=True">Hole Size Constraint: (3mm &gt; 2.54mm) Pad Free-7(38.6mm,59.2mm) on Multi-Layer Actual Hole Size = 3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1751.344mil|Location2.X=1900.231mil|Location1.Y=3032.131mil|Location2.Y=3181.019mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1751.344mil|Location2.X=1900.231mil|Location1.Y=3032.131mil|Location2.Y=3181.019mil|Absolute=True">Hole Size Constraint: (3.75mm &gt; 2.54mm) Pad S1-1(12.448mm,49.707mm) on Multi-Layer Actual Rectangular Hole Height = 3.75mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1751.265mil|Location2.X=1900.153mil|Location1.Y=3229.124mil|Location2.Y=3378.012mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1751.265mil|Location2.X=1900.153mil|Location1.Y=3229.124mil|Location2.Y=3378.012mil|Absolute=True">Hole Size Constraint: (3.75mm &gt; 2.54mm) Pad S1-2(12.446mm,54.711mm) on Multi-Layer Actual Rectangular Hole Height = 3.75mm</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID4WVHO1YMGNCRMMVX1S0213X1TNVQ4Q2LYRUV2IIFRP23YLLOUY1B"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2439.788mil|Location2.X=2451.038mil|Location1.Y=2503.824mil|Location2.Y=2515.074mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2439.788mil|Location2.X=2451.038mil|Location1.Y=2503.824mil|Location2.Y=2515.074mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.21mm &lt; 0.254mm) Between Pad S2-1(29.393mm,34.54mm) on Multi-Layer And Pad S2-2(26.98mm,34.54mm) on Multi-Layer [Top Solder] Mask Sliver [0.21mm] / [Bottom Solder] Mask Sliver [0.21mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2439.788mil|Location2.X=2451.038mil|Location1.Y=1754.217mil|Location2.Y=1765.467mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2439.788mil|Location2.X=2451.038mil|Location1.Y=1754.217mil|Location2.Y=1765.467mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.21mm &lt; 0.254mm) Between Pad S3-1(29.393mm,15.5mm) on Multi-Layer And Pad S3-2(26.98mm,15.5mm) on Multi-Layer [Top Solder] Mask Sliver [0.21mm] / [Bottom Solder] Mask Sliver [0.21mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2439.788mil|Location2.X=2451.038mil|Location1.Y=2133.745mil|Location2.Y=2144.995mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2439.788mil|Location2.X=2451.038mil|Location1.Y=2133.745mil|Location2.Y=2144.995mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.21mm &lt; 0.254mm) Between Pad S4-1(29.393mm,25.14mm) on Multi-Layer And Pad S4-2(26.98mm,25.14mm) on Multi-Layer [Top Solder] Mask Sliver [0.21mm] / [Bottom Solder] Mask Sliver [0.21mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID1MIWFJELOSPRLETA5V1FUUAMFPKH5NQSU3C4TPGMTWS0OOWTUUWL"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.254mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2227.593mil|Location2.X=2238.843mil|Location1.Y=3080.003mil|Location2.Y=3091.253mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2227.593mil|Location2.X=2238.843mil|Location1.Y=3080.003mil|Location2.Y=3091.253mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.237mm &lt; 0.254mm) Between Pad R1-1(22.953mm,48.325mm) on Multi-Layer And Track (22.953mm,49.341mm)(22.953mm,50.23mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.237mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2229.773mil|Location2.X=2242.131mil|Location1.Y=3312.869mil|Location2.Y=3324.119mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2229.773mil|Location2.X=2242.131mil|Location1.Y=3312.869mil|Location2.Y=3324.119mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.16mm &lt; 0.254mm) Between Pad R1-2(22.953mm,55.945mm) on Multi-Layer And Track (22.953mm,54.04mm)(22.953mm,54.929mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.16mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2132.112mil|Location2.X=2144.47mil|Location1.Y=3312.869mil|Location2.Y=3324.119mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2132.112mil|Location2.X=2144.47mil|Location1.Y=3312.869mil|Location2.Y=3324.119mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.16mm &lt; 0.254mm) Between Pad R2-1(20.473mm,55.945mm) on Multi-Layer And Track (20.473mm,54.04mm)(20.473mm,54.929mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.16mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2129.933mil|Location2.X=2141.183mil|Location1.Y=3080.003mil|Location2.Y=3091.253mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2129.933mil|Location2.X=2141.183mil|Location1.Y=3080.003mil|Location2.Y=3091.253mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.237mm &lt; 0.254mm) Between Pad R2-2(20.473mm,48.325mm) on Multi-Layer And Track (20.473mm,49.341mm)(20.473mm,50.23mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.237mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2030.054mil|Location2.X=2043.006mil|Location1.Y=3009.516mil|Location2.Y=3020.766mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2030.054mil|Location2.X=2043.006mil|Location1.Y=3009.516mil|Location2.Y=3020.766mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.22mm &lt; 0.254mm) Between Pad R3-1(17.973mm,48.27mm) on Multi-Layer And Text "R3" (18.489mm,47.173mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.22mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2031.507mil|Location2.X=2042.757mil|Location1.Y=3077.843mil|Location2.Y=3089.093mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2031.507mil|Location2.X=2042.757mil|Location1.Y=3077.843mil|Location2.Y=3089.093mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.237mm &lt; 0.254mm) Between Pad R3-1(17.973mm,48.27mm) on Multi-Layer And Track (17.973mm,49.286mm)(17.973mm,50.175mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.237mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2033.687mil|Location2.X=2046.045mil|Location1.Y=3310.709mil|Location2.Y=3321.959mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2033.687mil|Location2.X=2046.045mil|Location1.Y=3310.709mil|Location2.Y=3321.959mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.16mm &lt; 0.254mm) Between Pad R3-2(17.973mm,55.89mm) on Multi-Layer And Track (17.973mm,53.985mm)(17.973mm,54.874mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.16mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2332.639mil|Location2.X=2343.889mil|Location1.Y=2915.38mil|Location2.Y=2926.63mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2332.639mil|Location2.X=2343.889mil|Location1.Y=2915.38mil|Location2.Y=2926.63mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.208mm &lt; 0.254mm) Between Pad R4-1(24.663mm,45mm) on Multi-Layer And Track (25.679mm,45mm)(26.568mm,45mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.208mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2569.989mil|Location2.X=2581.239mil|Location1.Y=2915.904mil|Location2.Y=2927.154mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2569.989mil|Location2.X=2581.239mil|Location1.Y=2915.904mil|Location2.Y=2927.154mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.233mm &lt; 0.254mm) Between Pad R4-2(32.283mm,45mm) on Multi-Layer And Track (30.378mm,45mm)(31.267mm,45mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.233mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2722.663mil|Location2.X=2735.021mil|Location1.Y=3173.701mil|Location2.Y=3184.951mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2722.663mil|Location2.X=2735.021mil|Location1.Y=3173.701mil|Location2.Y=3184.951mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.16mm &lt; 0.254mm) Between Pad R5-1(35.473mm,52.41mm) on Multi-Layer And Track (35.473mm,50.505mm)(35.473mm,51.394mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.16mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2720.484mil|Location2.X=2731.734mil|Location1.Y=2940.835mil|Location2.Y=2952.085mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2720.484mil|Location2.X=2731.734mil|Location1.Y=2940.835mil|Location2.Y=2952.085mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.237mm &lt; 0.254mm) Between Pad R5-2(35.473mm,44.79mm) on Multi-Layer And Track (35.473mm,45.806mm)(35.473mm,46.695mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.237mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1734.533mil|Location2.X=1745.783mil|Location1.Y=3137.367mil|Location2.Y=3148.617mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1734.533mil|Location2.X=1745.783mil|Location1.Y=3137.367mil|Location2.Y=3148.617mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.15mm &lt; 0.254mm) Between Pad S1-1(12.448mm,49.707mm) on Multi-Layer And Track (10.098mm,47.927mm)(10.098mm,56.487mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.15mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1905.3mil|Location2.X=1916.55mil|Location1.Y=3064.532mil|Location2.Y=3075.782mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1905.3mil|Location2.X=1916.55mil|Location1.Y=3064.532mil|Location2.Y=3075.782mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.125mm &lt; 0.254mm) Between Pad S1-1(12.448mm,49.707mm) on Multi-Layer And Track (14.773mm,47.927mm)(14.773mm,56.487mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.125mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1736.09mil|Location2.X=1747.34mil|Location1.Y=3312.896mil|Location2.Y=3324.146mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1736.09mil|Location2.X=1747.34mil|Location1.Y=3312.896mil|Location2.Y=3324.146mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.229mm &lt; 0.254mm) Between Pad S1-2(12.446mm,54.711mm) on Multi-Layer And Track (10.098mm,47.927mm)(10.098mm,56.487mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.229mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1904.085mil|Location2.X=1915.335mil|Location1.Y=3285.023mil|Location2.Y=3296.273mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=1904.085mil|Location2.X=1915.335mil|Location1.Y=3285.023mil|Location2.Y=3296.273mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.187mm &lt; 0.254mm) Between Pad S1-2(12.446mm,54.711mm) on Multi-Layer And Track (14.773mm,47.927mm)(14.773mm,56.487mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.187mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2487.481mil|Location2.X=2499.623mil|Location1.Y=2546.862mil|Location2.Y=2558.112mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2487.481mil|Location2.X=2499.623mil|Location1.Y=2546.862mil|Location2.Y=2558.112mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.23mm &lt; 0.254mm) Between Pad S2-1(29.393mm,34.54mm) on Multi-Layer And Track (29.52mm,35.81mm)(29.52mm,36.445mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.23mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2487.481mil|Location2.X=2499.623mil|Location1.Y=1797.256mil|Location2.Y=1808.506mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2487.481mil|Location2.X=2499.623mil|Location1.Y=1797.256mil|Location2.Y=1808.506mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.23mm &lt; 0.254mm) Between Pad S3-1(29.393mm,15.5mm) on Multi-Layer And Track (29.52mm,16.77mm)(29.52mm,17.405mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.23mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82 %D0%BD%D0%B0 %D0%BA%D0%BE%D0%BD%D0%BA%D1%83%D1%80%D1%81\proect\%D1%82%D0%B5%D1%80%D0%BC%D0%BE%D1%81%D1%82%D0%B0%D1%82 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2487.481mil|Location2.X=2499.622mil|Location1.Y=2176.783mil|Location2.Y=2188.033mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\ecspr\Desktop\Проект на конкурс\proect\термостат 2\PCB2.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2487.481mil|Location2.X=2499.622mil|Location1.Y=2176.783mil|Location2.Y=2188.033mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.23mm &lt; 0.254mm) Between Pad S4-1(29.393mm,25.14mm) on Multi-Layer And Track (29.52mm,26.41mm)(29.52mm,27.045mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.23mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
